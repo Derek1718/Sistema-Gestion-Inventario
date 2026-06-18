@@ -12,8 +12,8 @@
 
 | Integrante | Módulo |
 |------------|--------|
-| Derek Gomez | Arquitectura base + CRUD Productos |
-| Ronald Rivera | CRUD Categorías |
+| Derek Gomez | Arquitectura base + CRUD Categorías |
+| Ronald Rivera | CRUD Productos |
 | Dario Pinde | CRUD Sucursales |
 | Frank Villalta | Movimientos de Inventario |
 | Harold Mera | Alertas de Stock + Reportes |
