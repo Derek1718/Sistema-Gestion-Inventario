@@ -1,15 +1,25 @@
 package com.inventario.controller;
 
-import com.inventario.model.Producto;
-import com.inventario.service.CategoriaService;
-import com.inventario.service.ProductoService;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.inventario.model.Producto;
+import com.inventario.service.CategoriaService;
+import com.inventario.service.ProductoService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/productos")
@@ -20,10 +30,18 @@ public class ProductoController {
     private final CategoriaService categoriaService;
 
     @GetMapping
-    public String listar(Model model) {
-        model.addAttribute("productos", productoService.listarTodos());
-        return "productos/listar";
-    }
+public String listar(Model model,
+                     @RequestParam(defaultValue = "0") int pagina,
+                     @RequestParam(defaultValue = "5") int tamano) {
+    Pageable pageable = PageRequest.of(pagina, tamano);
+        Page<Producto> productosPaginados = productoService.listarPaginado(pageable);
+
+    model.addAttribute("productos", productosPaginados.getContent());
+    model.addAttribute("paginaActual", pagina);
+    model.addAttribute("totalPaginas", productosPaginados.getTotalPages());
+    return "productos/listar";
+}
+
 
     @GetMapping("/nuevo")
     public String nuevo(Model model) {

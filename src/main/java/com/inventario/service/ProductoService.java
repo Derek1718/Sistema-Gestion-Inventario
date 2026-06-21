@@ -1,11 +1,13 @@
 package com.inventario.service;
 
-import com.inventario.model.Producto;
-import com.inventario.repository.ProductoRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.inventario.model.Producto;
+import com.inventario.repository.ProductoRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -29,4 +31,9 @@ public class ProductoService {
     public void eliminar(Long id) {
         productoRepository.deleteById(id);
     }
+    
+    public Page<Producto> listarPaginado(Pageable pageable) {
+    return productoRepository.findAll(pageable);
+}
+
 }
