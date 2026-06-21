@@ -18,7 +18,7 @@ Sistema web desarrollado con Spring Boot y PostgreSQL para gestionar el inventar
 | Ronald Rivera | [@ronaldrivera2002](https://github.com/ronaldrivera2002) |
 | Dario Pinde | [@dariopinde](https://github.com/dariopinde) |
 | Frank Villalta | [@Fraankvd08](https://github.com/Fraankvd08) |
-| Harold Mera | [@HArold29M](https://github.com/HArold29M) |
+| Harold Mero | [@HArold29M](https://github.com/HArold29M) |
 | Jostin Carpio | [@jostincarpio24](https://github.com/jostincarpio24) |
 
 ## Información académica
