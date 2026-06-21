@@ -43,6 +43,15 @@
             </tr>
         </tbody>
     </table>
+    <nav th:if="${totalPaginas > 1}">
+    <ul class="pagination">
+        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPaginas - 1)}"
+            th:classappend="${i == paginaActual} ? 'active'">
+            <a class="page-link" th:href="@{/productos(pagina=${i})}" th:text="${i + 1}"></a>
+        </li>
+    </ul>
+</nav>
+
 </div>
 </body>
 </html>
