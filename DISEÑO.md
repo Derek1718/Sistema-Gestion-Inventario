@@ -16,7 +16,7 @@
 | Ronald Rivera | CRUD Productos |
 | Dario Pinde | CRUD Sucursales |
 | Frank Villalta | Movimientos de Inventario |
-| Harold Mera | Alertas de Stock + Reportes |
+| Harold Mero | Alertas de Stock + Reportes |
 | Jostin Carpio | Exportación CSV + Paginación |
 
 ---
