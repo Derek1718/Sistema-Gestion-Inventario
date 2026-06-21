@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Movimiento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Nuevo Movimiento</h2>
+    <form th:action="@{/movimientos/guardar}" th:object="${movimiento}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Inventario (Producto - Sucursal)</label>
+            <select class="form-select" th:field="*{inventario.id}">
+                <option value="">Seleccione</option>
+                <option th:each="inv : ${inventarios}"
+                        th:value="${inv.id}"
+                        th:text="${inv.producto.nombre} + ' - ' + ${inv.sucursal.nombre} + ' (Stock: ' + ${inv.stockActual} + ')'"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo de Movimiento</label>
+            <select class="form-select" th:field="*{tipo}">
+                <option th:each="t : ${tipos}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad</label>
+            <input type="number" class="form-control" th:field="*{cantidad}">
+            <span class="text-danger" th:if="${#fields.hasErrors('cantidad')}"
+                  th:errors="*{cantidad}"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Observación</label>
+            <textarea class="form-control" th:field="*{observacion}" rows="2"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Registrar</button>
+        <a href="/movimientos" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
